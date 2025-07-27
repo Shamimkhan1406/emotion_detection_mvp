@@ -10,6 +10,8 @@ void main() {
 
 // The root widget of the application.
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     // MaterialApp configures the top-level Navigator and Theme.
@@ -24,14 +26,16 @@ class MyApp extends StatelessWidget {
 
 // A stateful widget for the main screen because its content will change.
 class EmotionHomePage extends StatefulWidget {
+  const EmotionHomePage({super.key});
+
   @override
-  _EmotionHomePageState createState() => _EmotionHomePageState();
+  EmotionHomePageState createState() => EmotionHomePageState();
 }
 
 // The State class for EmotionHomePage, containing the UI and logic.
-class _EmotionHomePageState extends State<EmotionHomePage> {
+class EmotionHomePageState extends State<EmotionHomePage> {
   // Controller to manage the text input field.
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
   // Stores the emotion string returned from the backend.
   String? predictedEmotion;
   // Stores the probability map for each emotion for the chart.
