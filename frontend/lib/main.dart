@@ -120,6 +120,30 @@ class EmotionHomePageState extends State<EmotionHomePage> {
     }
   }
 
+  // function for background color
+  Color getEmotionBackground(String? emotion) {
+    switch (emotion) {
+      case 'joy':
+        return Colors.yellow.shade100;
+      case 'sadness':
+        return Colors.tealAccent.shade100;
+      case 'anger':
+        return Colors.red.shade100;
+      case 'fear':
+        return Colors.grey.shade300;
+      case 'disgust':
+        return Colors.green.shade100;
+      case 'shame':
+        return Colors.purple.shade100;
+      case 'neutral':
+        return Colors.grey;
+      case 'surprise':
+        return Colors.orange.shade200;
+      default:
+        return Colors.white; // Default background
+    }
+  }
+
   // A helper widget to build the bar chart based on the probabilities.
   Widget _buildBarChart() {
     // If there's no probability data, return an empty widget.
@@ -194,8 +218,10 @@ class EmotionHomePageState extends State<EmotionHomePage> {
       // The top app bar with a title.
       appBar: AppBar(title: Text('Emotion Detection')),
       // The main content of the screen.
-      body: Padding(
-        padding: const EdgeInsets.all(16.0), // Add padding around the content.
+      body: AnimatedContainer(
+        duration: Duration(milliseconds: 500),
+        color: getEmotionBackground(predictedEmotion),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           // Arrange widgets vertically.
           children: [
@@ -225,7 +251,7 @@ class EmotionHomePageState extends State<EmotionHomePage> {
             SizedBox(height: 24), // A larger vertical space.
             Expanded(
               child: Column(
-                mainAxisAlignment:MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Conditionally display the loading indicator.
