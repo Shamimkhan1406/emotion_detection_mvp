@@ -54,7 +54,7 @@ class EmotionHomePageState extends State<EmotionHomePage> {
     });
 
     // The URL of the backend prediction endpoint.
-    final uri = Uri.parse('http://172.20.10.3:5001/predict');
+    final uri = Uri.parse('http://192.168.0.113:5001/predict');
     try {
       // Make an HTTP POST request to the backend.
       final response = await http.post(
